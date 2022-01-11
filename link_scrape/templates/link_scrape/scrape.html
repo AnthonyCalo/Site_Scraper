@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body class="bg-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="m-2 col-md-12">
+                <h1>Link Collector</h1>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-md-4">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input class='form-control' type="text" id="sites" placeholder="Enter Site Address" name='site'>
+                </div>
+                <div class="col-md-1">
+                    <button class='btn btn-primary' type='submit'>Scrape</button>
+                </div>
+                <div class="col-md-7">
+                    <a class='btn btn-danger' href='/delete'>Delete</a>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <table class="table">
+                    <thead class="thead-dark">
+                        
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                      </tr>
+                    </thead>
+                    <tbody class='text-light'>
+                        {% for link in links %}
+                        {% if link.name or link.address%}
+                        <tr>
+                            <td>{{link.id}}</td>
+                            <td>{{link.name}}</td>
+                            <td>{{link.address}}</td>
+                          </tr>
+                        {% endif %}
+                        {% endfor %}
+            
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>
