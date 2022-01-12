@@ -7,17 +7,17 @@
                         
                       <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Address</th>
+                        <th scope="col">Inner Text</th>
+                        <th scope="col">Class</th>
                       </tr>
                     </thead>
                     <tbody class='text-light'>
-                        {% for link in links %}
-                        {% if link.name or link.address%}
+                        {% for h in h_tags %}
+                        {% if h.inner_text or h.class_name%}
                         <tr>
-                            <td>{{link.id}}</td>
-                            <td>{{link.name}}</td>
-                            <td>{{link.address}}</td>
+                            <td>{{h.id}}</td>
+                            <td>{{h.inner_text}}</td>
+                            <td>{{h.class_name}}</td>
                           </tr>
                         {% endif %}
                         {% endfor %}

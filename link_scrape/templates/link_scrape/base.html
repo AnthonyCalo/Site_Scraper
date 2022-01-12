@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Scraper</title>
+</head>
+<body class="bg-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="m-2 col-md-12">
+                <h1>Link Collector</h1>
+            </div>
+        </div>
+        <div class="row mt-3 mb-4">
+            <div class="col-md-4">
+                <form method="POST" action="/">
+                    {% csrf_token %}
+                    <input class='form-control' type="text" id="sites" placeholder="Enter Site Address" name='site'>
+                </div>
+                <div class="col-md-2">
+                    <button class='btn btn-primary' type='submit'>Scrape</button>
+                </div>
+                <div class="col-md-1">
+                    <a class='btn btn-danger' href='/delete'>Delete</a>
+                </div>
+
+                <div class="col-md-3 dropdown form-group">
+                    <div class="row">
+                        <label for="tag" class="col-md-3 float-left" style="font-weight:bold;">Tag</label>
+                    <select name="tag" class='dropwdown-menu col-md-9 form-control'>
+                        <option class="dropdown-item" value="a">A</option>
+                        <option class="dropdown-item" value="h1">H1</option>
+                        <option class="dropdown-item" value="h2">H2</option>
+                        <option class="dropdown-item" value="p">P</option>
+                        <option class="dropdown-item" value="img">Img</option>
+                    </select>
+                </div>
+                </div>
+            </form>
+        </div>
+
+    {% block body %}
+    {% endblock %}
+    </div>
+
+    </body>
+    </html>

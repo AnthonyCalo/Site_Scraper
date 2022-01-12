@@ -20,6 +20,9 @@ from link_scrape import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.scrape, name = 'home'),
+    path('img', views.img_view, name = 'image'),
+    path('h1s', views.h1_view, name = 'h1'),
+    path('h2s', views.h2_view, name = 'h2'),
+    path('paragraphs', views.para_view, name = 'paragraphs'),
     path('delete', views.delete, name = 'delete'),
-
 ]
