@@ -84,7 +84,6 @@ def para_view(request):
 def delete(request):
     del_list = [Link, H1, H2, Paragraph, Img]
     for i in del_list:
-        print("FARTS")
         obs = i.objects.all()
         print(obs, "obs")
         obs.delete()
