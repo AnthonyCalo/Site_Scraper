@@ -9,7 +9,10 @@ def scrape(request):
     if(request.method=="POST"):
         site = request.POST.get('site', '')
         tag = request.POST.get("tag",'')
-        page = requests.get(site)
+        try:
+            page = requests.get(site)
+        except:
+            return redirect("/")
         soup = BeautifulSoup(page.text, 'html.parser')
         if(tag=="a"):
             try:
@@ -83,17 +86,21 @@ def para_view(request):
 
 def delete(request):
     del_list = [Link, H1, H2, Paragraph, Img]
-    for i in del_list:
-        print("FARTS")
-        obs = i.objects.all()
-        print(obs, "obs")
-        obs.delete()
+    try:
+        for i in del_list:
+            obs = i.objects.all()
+            print(obs, "obs")
+            obs.delete()
+    except Exception as e:
+        print("ERROR HERE: ", e)
+        pass
     return redirect('/') 
 
 def delete_img(request):
     del_list = [Link, H1, H2, Paragraph, Img]
     for i in del_list:
         obs = i.objects.all()
+        print
         obs.delete()
     return redirect('/') 
     # with open(r'C:/Users/acalo/Documents/mycode/webdev/webdevloose/homepage.html', 'r') as f:
